@@ -5,7 +5,6 @@ const PRODUCTS = require("../model/productModel")
 
 const router = express.Router();
 
-
 router.get("/new", (req, res) => {
   res.render("new", { product: new PRODUCTS() })
 })
@@ -13,8 +12,6 @@ router.get("/new", (req, res) => {
 router.get("/:slug", async (req, res) => {
 
   const product = await PRODUCTS.findOne({ slug: req.params.slug })
-
-
 
   res.render("show", { product })
 })
@@ -35,6 +32,16 @@ router.post("/", async (req, res) => {
   }
 
 })
+
+
+
+router.delete("/:id", async (req, res) => {
+  await PRODUCTS.findByIdAndDelete(req.params.id)
+  res.redirect("/")
+
+})
+
+
 
 // const dataShoes = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/shoes.json')))
 

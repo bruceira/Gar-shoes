@@ -20,9 +20,9 @@
             <%= product.category %>
           </div>
           <div class="card-text mb-2"><%= product.price %></div>
-          <a href="/articles/<%= product.slug %>" class="btn btn-primary">Read More</a>
+          <a href="shoes/<%= product.slug %>" class="btn btn-primary">Read More</a>
           <a href="/articles/edit/<%= product.id %>" class="btn btn-info">Edit</a>
-          <form action="/articles/<%= product.id %>?_method=DELETE" method="POST" class="d-inline">
+          <form action="shoes/<%= product.id %>?_method=DELETE" method="POST" class="d-inline">
             <button type="submit" class="btn btn-danger" >Delete</button>
           </form>
         </div>

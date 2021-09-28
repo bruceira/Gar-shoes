@@ -1,10 +1,11 @@
-const bodyParser = require("body-parser")
 const express = require("express")
 const fs = require("fs")
 const logger = require("morgan")
 const path = require("path")
 const itemRoutes = require("./routes/itemRoutes.js")
 const mongoose = require("mongoose")
+const PRODUCT = require("./model/productModel")
+const methodOverride = require("method-override")
 
 
 
@@ -19,22 +20,19 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 
+app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride("_method"))
 app.set('port', PORT)
-app.use(express.urlencoded({ extends: false }))
 app.set("view engine", 'ejs')
 
 //middleware
 app.use(logger("tiny"))
-app.use(bodyParser.json())
 app.use("/shoes", require(path.join(__dirname, "./routes/itemRoutes")))
 
 
 
-app.get("/", (req, res) => {
-  const products = JSON.parse(fs.readFileSync(path.join(__dirname, '/data/shoes.json')))
-
-
-
+app.get("/", async (req, res) => {
+  const products = await PRODUCT.find().sort({ name: "asc" })
   res.render("index", { products })
 })
 app.use((req, res, next) => {

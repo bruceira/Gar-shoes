@@ -1,14 +1,19 @@
 <div class="form-group">
   <label for="title">Name</label>
-  <input required value="<%= product.name %>" type="text" name="name" id="title" class="form-control" placeholder="enter the Name....">
+  <input required value="<%= product.name %>" type="text" name="name" id="title" class="form-control" placeholder="enter the Name of Shoes....">
 </div>
 <div class="form-group">
   <label for="category">category</label>
-  <textarea name="category" id="description" class="form-control" placeholder="enter the Description...."><%= product.category  %></textarea> 
+  <textarea name="category" id="description" class="form-control" placeholder="enter the Cathegory of Shoes...."><%= product.category  %></textarea> 
 </div>
 <div class="form-group">
   <label for="price">Price</label>
-  <textarea required name="price" id="markdown" class="form-control" placeholder="enter the Markdown...."><%= product.price %></textarea>
+  <textarea required name="price" id="markdown" class="form-control" placeholder="enter the Price...."><%= product.price %></textarea>
+</div>
+
+<div class="form-group">
+  <label for="price">Color</label>
+  <textarea required name="color" id="color" class="form-control" placeholder="enter the color of Shoes...."><%= product.color %></textarea>
 </div>
 
 <a href="/" class="btn btn-secondary">Cancel</a>

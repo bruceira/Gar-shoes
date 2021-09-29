@@ -14,8 +14,9 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "must have the category "]
   },
-  price: { type: Number, default: 25000 },
+  price: { type: Number, required: [true, "mush have price"] },
   color: { type: String },
+  addedAt: { type: Date, default: new Date() },
   slug: { type: String, required: true, unique: true }
 })
 
